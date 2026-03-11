@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="col-md-5 col-lg-4">
+
+        <div class="card border-0 shadow-lg rounded-4 p-4">
+
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">Create your account</h2>
+                <p class="text-muted small">
+                    Join the College Project Portal
+                </p>
+            </div>
+
+            <form method="post">
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.errors }}
+                    </div>
+            {% endif %}
+            
+                {% csrf_token %}
+
+                <!-- Username -->
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold">Username</label>
+                    {{ form.username }}
+                </div>
+
+                <!-- Role -->
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold">Role</label>
+                    {{ form.role }}
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label class="form-label small fw-semibold">Password</label>
+                    {{ form.password1 }}
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mb-4">
+                    <label class="form-label small fw-semibold">Confirm Password</label>
+                    {{ form.password2 }}
+                </div>
+
+                <button type="submit"
+                        class="btn btn-dark w-100 rounded-3 py-2 fw-semibold">
+                    Create Account
+                </button>
+
+            </form>
+
+            <div class="text-center mt-4">
+                <span class="text-muted small">
+                    Already have an account?
+                </span>
+                <a href="{% url 'login' %}" class="fw-semibold text-decoration-none">
+                    Sign in
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

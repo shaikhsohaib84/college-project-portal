@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1 class="mb-4 text-light">Submit New Project</h1>
+
+    <div class="card bg-dark text-light shadow-lg">
+        <div class="card-body">
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <!-- Title -->
+                <div class="mb-3">
+                    <label class="form-label">Project Title</label>
+                    <input type="text" name="title" class="form-control" required>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea name="description" rows="5" class="form-control" required></textarea>
+                </div>
+
+                <!-- File Upload -->
+                <div class="mb-4">
+                    <label class="form-label">Upload File</label>
+                    <input type="file" name="file" class="form-control">
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex gap-3">
+                    <button type="submit" class="btn btn-primary">
+                        Submit Project
+                    </button>
+
+                    <a href="{% url 'student_dashboard' %}" class="btn btn-outline-light">
+                        Back to Dashboard
+                    </a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

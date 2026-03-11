@@ -1,0 +1,17 @@
+<h1>Project List</h1>
+
+{% for project in projects %}
+    <p>
+        {{ project.title }} -
+        {{ project.get_status_display }}
+
+        <a href="{% url 'approve_project' project.id %}">Approve</a>
+        <a href="{% url 'reject_project' project.id %}">Reject</a>
+    </p>
+{% empty %}
+    <p>No approved projects available.</p>
+{% endfor %}
+<form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
